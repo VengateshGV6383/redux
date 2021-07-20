@@ -59,6 +59,10 @@ export const tasklistSlice = createSlice({
 
       if (window.confirm(`Hurrah! You have completed ${task} `))
         state.tasklist.unshift(newTask);
+      else {
+        newTask.isCompleted = false;
+        state.tasklist.push(newTask);
+      }
     },
   },
 });
