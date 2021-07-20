@@ -1,15 +1,32 @@
 import React from 'react';
 import { useState } from 'react';
 
-const InputTasks=({handleOnClickBtn})=>{
-
-    const [task,setTask]=useState(' ');
+const InputTasks=({handleOnClickBtn,btnName,value})=>{
+    const initialState = value? value.task:" ";
+    const [task,setTask]=useState(initialState);
     const handleonChange=(e)=>{
         setTask(e.target.value);
     }
     const buttonClicked=()=>{
-        if(task.length<=100)
-            handleOnClickBtn(task);
+        if(task.length<=100 && task!==" "){
+            let id=0;
+            if(localStorage.getItem("userid")){
+                id=parseInt(localStorage.getItem("userid"));
+                localStorage.setItem("userid",`${id+1}`)
+            }else{
+                localStorage.setItem("userid",`${id+1}`)
+            }
+            if(value){
+                handleOnClickBtn({task:task,isCompleted:value.isCompleted,id:value.id,date:value.date})
+    
+            }
+            else{
+                handleOnClickBtn({task:task,isCompleted:false,date:new Date(),id:id})
+            }
+            //let todo=value?{task:value.task,id:value.id,isCompleted:value.isCompleted,date:value.date}:{task:task,id:id,isCompleted:false,date:new Date()}
+        
+
+        }
         else
             window.alert("Dont provide any tasks higher than 100 characters")
         setTask(" ");
@@ -18,9 +35,9 @@ const InputTasks=({handleOnClickBtn})=>{
         <div className="ui form">
             <div className="field">
                 <label htmlFor="todoinp">Input your Tasks</label>
-                <input type="text" id="todoinp" value={task} onChange={handleonChange}/>
+                <input type="text" id="todoinp" value={task} onChange={handleonChange} placeholder="Maximum of 100 characters"/>
             </div>
-            <button className="ui primary button" onClick={buttonClicked}>Add</button>
+            <button className="ui primary button" onClick={buttonClicked}>{btnName}</button>
         </div>
     )
 }

@@ -10,7 +10,7 @@ const App=()=>{
     const selector=useSelector((state)=>state.tasklist)
     const dispatch=useDispatch()
     const addingTodos=(task)=>{
-        dispatch(addTask({task,isCompleted:false}))
+        dispatch(addTask(task))
        
         }
     
@@ -20,13 +20,13 @@ const App=()=>{
     dispatch(deleteTask({id:id}))
 }
 
-const setCompleted=({id,task})=>{
-    	dispatch(markAsdone({id:id,task:task}))    
+const setCompleted=({id,task,date})=>{
+    	dispatch(markAsdone({id:id,task:task,date:date}))    
 }
     return(
 <div>
     <div className="ui segment" style={{maxHeight:"200px",position:"relative"}}>
-         <InputTasks handleOnClickBtn={addingTodos}/>
+         <InputTasks value={null} handleOnClickBtn={addingTodos} btnName="Add"/>
      </div>
                 <div className="ui segment" style={{height:"400px",overflow:"auto"}}>
                 <div className="ui styled accordion" style={{maxHeight:"max-content",width:"100%",overflow:"auto",padding:"1%"}} >
