@@ -55,7 +55,7 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
             <p>
             <button className="ui teal button" style={{margin:"1%"}} onClick={()=>setUpdate(index)}><i className="pencil alternate icon"></i>&nbsp;Edit</button>
             <button className="ui orange button" style={{margin:"1%"}} onClick={()=>filter(item.id)}><i className="trash white icon"></i>&nbsp;Delete</button>&emsp;
-            <button className="ui button" style={{marigin:"1%"}} onClick={()=>setCompleted({id:item.id,task:item.task,date:item.date})}><i className="bookmark white icon"></i>&nbsp;Completed</button>
+            {!item.isCompleted?<button className="ui button" style={{marigin:"1%"}} onClick={()=>setCompleted({id:item.id,task:item.task,date:item.date})}><i className="bookmark white icon"></i>&nbsp;Completed</button>:null}
             </p>
             </div>
              </div>
