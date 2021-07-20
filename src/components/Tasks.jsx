@@ -34,7 +34,7 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
             
             <div className={idx===index?"active title":"title"}>
                     <i className="dropdown icon"></i>
-                    {`Task number : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{date.slice(0,24)}
+                    <i className="info circle icon"></i>{`Task no : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{date.slice(0,24)}
            </div>
            
                <div className={idx===index?"active content":"content"}>

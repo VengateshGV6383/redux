@@ -36,7 +36,7 @@ const InputTasks=({handleOnClickBtn,btnName,value})=>{
     return (
         <div className="ui form">
             <div className="field">
-                <label htmlFor="todoinp">Input your Tasks</label>
+                <label htmlFor="todoinp">What's your plan today?</label>
                 <input type="text" id="todoinp" value={task} onChange={handleonChange} placeholder="Maximum of 100 characters" style={{maxWidth:maxWidth}}/>
                 {value?<button className="ui positive button" style={{marginLeft:"1%"}} onClick={buttonClicked}>{btnName}</button>:null}
             </div>

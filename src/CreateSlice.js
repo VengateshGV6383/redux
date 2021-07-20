@@ -58,10 +58,10 @@ export const tasklistSlice = createSlice({
       //inserting the fetched task with marked completed
 
       if (window.confirm(`Hurrah! You have completed ${task} `))
-        state.tasklist.unshift(newTask);
+        state.tasklist.push(newTask);
       else {
         newTask.isCompleted = false;
-        state.tasklist.push(newTask);
+        state.tasklist.unshift(newTask);
       }
     },
   },
