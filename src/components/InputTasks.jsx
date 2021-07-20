@@ -7,6 +7,7 @@ const InputTasks=({handleOnClickBtn,btnName,value})=>{
     const handleonChange=(e)=>{
         setTask(e.target.value);
     }
+    const maxWidth=btnName==="Update"?"50%":"100%";
     const buttonClicked=()=>{
         if(task.length<=100 && task!==" "){
             let id=0;
@@ -21,7 +22,8 @@ const InputTasks=({handleOnClickBtn,btnName,value})=>{
     
             }
             else{
-                handleOnClickBtn({task:task,isCompleted:false,date:new Date(),id:id})
+                let date=`${new Date()}`;
+                handleOnClickBtn({task:task,isCompleted:false,date:date.slice(0,24),id:id})
             }
             //let todo=value?{task:value.task,id:value.id,isCompleted:value.isCompleted,date:value.date}:{task:task,id:id,isCompleted:false,date:new Date()}
         
@@ -35,9 +37,10 @@ const InputTasks=({handleOnClickBtn,btnName,value})=>{
         <div className="ui form">
             <div className="field">
                 <label htmlFor="todoinp">Input your Tasks</label>
-                <input type="text" id="todoinp" value={task} onChange={handleonChange} placeholder="Maximum of 100 characters"/>
+                <input type="text" id="todoinp" value={task} onChange={handleonChange} placeholder="Maximum of 100 characters" style={{maxWidth:maxWidth}}/>
+                {value?<button className="ui positive button" style={{marginLeft:"1%"}} onClick={buttonClicked}>{btnName}</button>:null}
             </div>
-            <button className="ui primary button" onClick={buttonClicked}>{btnName}</button>
+            {value?null:<button className={btnName==="Add"?"ui primary button":"ui positive button"} onClick={buttonClicked}>{btnName}</button>}
         </div>
     )
 }

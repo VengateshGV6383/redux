@@ -17,18 +17,17 @@ export const tasklistSlice = createSlice({
         date: date,
       };
       //the task to get updated
-      const taskTObeUpdate = state.tasklist.filter(
-        (item) => item.id === newtask.id
-      );
+      const arr = state.tasklist.filter((item) => item.id === newtask.id);
       //only if task id is already present in tasklist
-      if (taskTObeUpdate.length !== 0) {
+      if (arr.length !== 0) {
+        const [taskTObeUpdate] = arr;
         //filtering the taskslist other than taskToBeUpdate
         state.tasklist = state.tasklist.filter(
-          (item) => item.id !== taskTObeUpdate[0].id
+          (item) => item.id !== taskTObeUpdate.id
         );
         //Updatding the task;
-        taskTObeUpdate[0]["task"] = newtask.task;
-        state.tasklist.unshift(taskTObeUpdate[0]);
+        taskTObeUpdate.task = newtask.task;
+        state.tasklist.unshift(taskTObeUpdate);
       } else {
         state.tasklist.unshift(newtask);
       }
@@ -57,7 +56,9 @@ export const tasklistSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
       //inserting the fetched task with marked completed
-      state.tasklist.unshift(newTask);
+
+      if (window.confirm(`Hurrah! You have completed ${task} `))
+        state.tasklist.unshift(newTask);
     },
   },
 });

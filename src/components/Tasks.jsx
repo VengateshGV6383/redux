@@ -28,12 +28,13 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
         <TaskMenu totaltask={totalTask(tasklist)} completedTask={totalIsCompleted(tasklist)} notCompleted={totalTask(tasklist) - totalIsCompleted(tasklist) }/>
         {
             tasklist?.map((item,index)=>{
+                let date=`${item.date}`
                 return(
             <div onClick={()=>setActiveDropdown(index)} key={item.id} style={{maxHeight:"150px",overflow:"auto"}} >
             
             <div className={idx===index?"active title":"title"}>
                     <i className="dropdown icon"></i>
-                    {`Task number : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{`${item.date}`}
+                    {`Task number : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{date.slice(0,24)}
            </div>
            
                <div className={idx===index?"active content":"content"}>
