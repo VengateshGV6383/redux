@@ -45,7 +45,7 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
                         :
                         <div  style={{margin:"1%"}}>
                             {item.task}
-                            {item.isCompleted ?<p className="ui green left pointing label">Done</p>:<p className="ui left pointing label">Not yet completed</p> }
+                            {item.isCompleted ?<p className="ui green left pointing label">Done</p>:<p className="ui left pointing label"><h5>Todo</h5></p> }
                         </div>
                    }
                         

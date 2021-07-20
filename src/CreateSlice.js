@@ -26,7 +26,7 @@ export const tasklistSlice = createSlice({
           (item) => item.id !== taskTObeUpdate.id
         );
         //Updatding the task;
-        taskTObeUpdate.task = newtask.task;
+        taskTObeUpdate.task = task;
         state.tasklist.unshift(taskTObeUpdate);
       } else {
         state.tasklist.unshift(newtask);
