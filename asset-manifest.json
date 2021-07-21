@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/redux/static/css/main.bbf8d70d.chunk.css",
-    "main.js": "/redux/static/js/main.2a1d8f26.chunk.js",
-    "main.js.map": "/redux/static/js/main.2a1d8f26.chunk.js.map",
-    "runtime-main.js": "/redux/static/js/runtime-main.4b8379f4.js",
-    "runtime-main.js.map": "/redux/static/js/runtime-main.4b8379f4.js.map",
-    "static/js/2.195140d2.chunk.js": "/redux/static/js/2.195140d2.chunk.js",
-    "static/js/2.195140d2.chunk.js.map": "/redux/static/js/2.195140d2.chunk.js.map",
-    "index.html": "/redux/index.html",
-    "static/css/main.bbf8d70d.chunk.css.map": "/redux/static/css/main.bbf8d70d.chunk.css.map",
-    "static/js/2.195140d2.chunk.js.LICENSE.txt": "/redux/static/js/2.195140d2.chunk.js.LICENSE.txt"
+    "main.css": "https://VengateshGV6383.github.io/redux/static/css/main.bbf8d70d.chunk.css",
+    "main.js": "https://VengateshGV6383.github.io/redux/static/js/main.2a1d8f26.chunk.js",
+    "main.js.map": "https://VengateshGV6383.github.io/redux/static/js/main.2a1d8f26.chunk.js.map",
+    "runtime-main.js": "https://VengateshGV6383.github.io/redux/static/js/runtime-main.726f5d3f.js",
+    "runtime-main.js.map": "https://VengateshGV6383.github.io/redux/static/js/runtime-main.726f5d3f.js.map",
+    "static/js/2.195140d2.chunk.js": "https://VengateshGV6383.github.io/redux/static/js/2.195140d2.chunk.js",
+    "static/js/2.195140d2.chunk.js.map": "https://VengateshGV6383.github.io/redux/static/js/2.195140d2.chunk.js.map",
+    "index.html": "https://VengateshGV6383.github.io/redux/index.html",
+    "static/css/main.bbf8d70d.chunk.css.map": "https://VengateshGV6383.github.io/redux/static/css/main.bbf8d70d.chunk.css.map",
+    "static/js/2.195140d2.chunk.js.LICENSE.txt": "https://VengateshGV6383.github.io/redux/static/js/2.195140d2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4b8379f4.js",
+    "static/js/runtime-main.726f5d3f.js",
     "static/js/2.195140d2.chunk.js",
     "static/css/main.bbf8d70d.chunk.css",
     "static/js/main.2a1d8f26.chunk.js"
