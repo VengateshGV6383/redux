@@ -30,11 +30,11 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
             tasklist?.map((item,index)=>{
                 let date=`${item.date}`
                 return(
-            <div onClick={()=>setActiveDropdown(index)} key={item.id} style={{maxHeight:"150px",overflow:"auto"}} >
+            <div onClick={()=>setActiveDropdown(index)} key={item.id} style={{maxHeight:"150px",margin:"1%",overflow:"auto"}} >
             
             <div className={idx===index?"active title":"title"}>
                     <i className="dropdown icon"></i>
-                    <i className="info circle icon"></i>{`Task no : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{date.slice(0,24)}
+                    <i className="info circle icon "></i>{`Task no : ${item.id}`}&emsp;&emsp;<i className="calendar icon"></i>{date.slice(0,24)}
            </div>
            
                <div className={idx===index?"active content":"content"}>
@@ -53,7 +53,7 @@ const ListItems = ({tasklist,filter,setCompleted}) => {
            
             
             <p>
-            <button className="ui teal button" style={{margin:"1%"}} onClick={()=>setUpdate(index)}><i className="pencil alternate icon"></i>&nbsp;Edit</button>
+            {item.isCompleted?null:<button className="ui teal button" style={{margin:"1%"}} onClick={()=>setUpdate(index)}><i className="pencil alternate icon"></i>&nbsp;Edit</button>}
             <button className="ui orange button" style={{margin:"1%"}} onClick={()=>filter(item.id)}><i className="trash white icon"></i>&nbsp;Delete</button>&emsp;
             {!item.isCompleted?<button className="ui button" style={{marigin:"1%"}} onClick={()=>setCompleted({id:item.id,task:item.task,date:item.date})}><i className="bookmark white icon"></i>&nbsp;Completed</button>:null}
             </p>
