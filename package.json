@@ -1,6 +1,7 @@
 {
   "name": "todo-list",
   "version": "0.1.0",
+  "homepage": "https://VengateshGV6383.github.io/redux",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
@@ -15,7 +16,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "set PUBLIC_URL=https://VengateshGV6383.github.io/redux",
     "build": "react-scripts build",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build", 
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -36,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
