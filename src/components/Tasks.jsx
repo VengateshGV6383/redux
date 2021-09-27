@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import InputTasks from "./InputTasks";
 import TaskMenu from "./TaskMenu";
-const ListItems = ({ tasklist, filter, setCompleted, addingTodos }) => {
+const ListItems = ({ tasklist, deleteTask, setCompleted, updateTodos }) => {
   const [idx, setActiveIdx] = useState(null);
 
-  const [update, setUpdate] = useState(null);
+  const [update, setUpdate] = useState();
   const totalIsCompleted = (list) => {
     let count = list.filter((item) => item.isCompleted === true);
     return count.length;
@@ -45,7 +45,8 @@ const ListItems = ({ tasklist, filter, setCompleted, addingTodos }) => {
                 <InputTasks
                   btnName="Update"
                   value={item}
-                  handleOnClickBtn={addingTodos}
+                  handleOnClickBtn={updateTodos}
+                  setUpdate={setUpdate}
                 />
               ) : (
                 <div style={{ margin: "1%" }}>
@@ -72,7 +73,7 @@ const ListItems = ({ tasklist, filter, setCompleted, addingTodos }) => {
                   <button
                     className="ui orange button"
                     style={{ margin: "1%" }}
-                    onClick={() => filter(item.id)}
+                    onClick={() => deleteTask(item)}
                   >
                     <i className="trash white icon"></i>&nbsp;Delete
                   </button>
@@ -81,13 +82,7 @@ const ListItems = ({ tasklist, filter, setCompleted, addingTodos }) => {
                     <button
                       className="ui button"
                       style={{ marigin: "1%" }}
-                      onClick={() =>
-                        setCompleted({
-                          id: item.id,
-                          task: item.task,
-                          date: item.date,
-                        })
-                      }
+                      onClick={() => setCompleted(item)}
                     >
                       <i className="bookmark white icon"></i>&nbsp;Completed
                     </button>

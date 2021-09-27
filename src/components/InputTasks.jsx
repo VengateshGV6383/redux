@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const InputTasks = ({ handleOnClickBtn, btnName, value }) => {
+const InputTasks = ({ handleOnClickBtn, btnName, value, setUpdate }) => {
   const initialState = value ? value.task : " ";
   const [task, setTask] = useState(initialState);
   const handleonChange = (e) => {
@@ -24,6 +24,7 @@ const InputTasks = ({ handleOnClickBtn, btnName, value }) => {
           id: value.id,
           date: value.date,
         });
+        setUpdate(null);
       } else {
         handleOnClickBtn({
           task: task,

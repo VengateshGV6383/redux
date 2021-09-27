@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { addTask, deleteTask, markAsdone } from "../CreateSlice";
-import { useSelector, useDispatch } from "react-redux";
+// import { addTask, deleteTask, markAsdone } from "../CreateSlice";
+// import { useSelector, useDispatch } from "react-redux";
 
 import InputTasks from "./InputTasks";
 import ListItems from "./Tasks";
@@ -18,27 +18,46 @@ const App = () => {
     getApiCall().then((res) => setTask(res));
   }, []);
 
-  const selector = useSelector((state) => state.tasklist);
-  const dispatch = useDispatch();
+  // const selector = useSelector((state) => state.tasklist);
+  // const dispatch = useDispatch();
 
   const setApiCall = async (task) => {
     const { data } = await api.post("/addtask/", JSON.stringify(task));
     return data?.result;
   };
+  const mrkcmpltApiCall = async (task) => {
+    const { data } = await api.post("/mrkCmptlist/", JSON.stringify(task));
+    return data?.result;
+  };
+  const updtApiCall = async (task) => {
+    const { data } = await api.post("/updtlist/", JSON.stringify(task));
+    return data?.result;
+  };
+  const dltApiCall = async (task) => {
+    const { data } = await api.post("/delete/", JSON.stringify(task));
+    return data?.result;
+  };
   const addingTodos = (task) => {
     setApiCall(task).then((res) => setTask(res));
-    dispatch(addTask(task));
+    //dispatch(addTask(task));
+  };
+
+  const updateTodos = (task) => {
+    updtApiCall(task).then((res) => setTask(res));
+    //dispatch(addTask(task));
   };
 
   // const keys = Object.keys(selector);
   //const keys = getApiCall();
 
-  const removeTask = (id) => {
-    dispatch(deleteTask({ id: id }));
+  const removeTask = (task) => {
+    dltApiCall(task).then((res) => setTask(res));
+    //dispatch(deleteTask({ id: id }));
   };
 
-  const setCompleted = ({ id, task, date }) => {
-    dispatch(markAsdone({ id: id, task: task, date: date }));
+  const setCompleted = (task) => {
+    mrkcmpltApiCall(task).then((res) => setTask(res));
+    //dispatch(markAsdone({ id: id, task: task, date: date }));
   };
   return (
     <div>
@@ -46,7 +65,12 @@ const App = () => {
         className="ui segment"
         style={{ maxHeight: "200px", position: "relative" }}
       >
-        <InputTasks value={null} handleOnClickBtn={addingTodos} btnName="Add" />
+        <InputTasks
+          value={null}
+          handleOnClickBtn={addingTodos}
+          btnName="Add"
+          setUpdate={null}
+        />
       </div>
       <div className="ui segment" style={{ height: "400px", overflow: "auto" }}>
         <div
@@ -61,9 +85,9 @@ const App = () => {
           {task.length !== 0 ? (
             <ListItems
               tasklist={task}
-              filter={removeTask}
+              deleteTask={removeTask}
               setCompleted={setCompleted}
-              addingTodos={addingTodos}
+              updateTodos={updateTodos}
             />
           ) : null}
         </div>
